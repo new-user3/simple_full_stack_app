@@ -1,0 +1,27 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Full Stack App</title>
+</head>
+<body>
+    <h1>Simple Full Stack App</h1>
+    <button onclick="sendRequest()">Send Request</button>
+    <div id="response"></div>
+
+    <script>
+        function sendRequest() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://localhost:8080", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("response").innerText = xhr.responseText;
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
